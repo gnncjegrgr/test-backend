@@ -29,17 +29,20 @@ app.use('/uploads', express.static('uploads'));
 app.post('/UploadPhoto', uploadPhoto.single('photo'), (req, res) => {
   var _uid = req.body.uid;
   var file = req.file;
-  if (file) {
-    sharp(file.path)
-      .resize(300, 300)
-      .toFile('./uploads/' + '300x300-' + file.filename, function (err) {
-        if (err) {
-          console.log('sharp>>>', err);
-        } else {
-          console.log('resize ok !');
-        }
-      });
-  } else throw 'error';
+  console.log(_uid);
+  console.log(file);
+  res.json({ asd: 'success' });
+  // if (file) {
+  //   sharp(file.path)
+  //     .resize(300, 300)
+  //     .toFile('./uploads/' + '300x300-' + file.filename, function (err) {
+  //       if (err) {
+  //         console.log('sharp>>>', err);
+  //       } else {
+  //         console.log('resize ok !');
+  //       }
+  //     });
+  // } else throw 'error';
 });
 
 app.listen(80, () => {
