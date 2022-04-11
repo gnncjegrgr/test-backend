@@ -31,7 +31,7 @@ app.post('/UploadPhoto', uploadPhoto.single('photo'), (req, res) => {
   var file = req.file;
   if (file) {
     sharp(file.path)
-      .resize(300, 300)
+      .resize(3000, 4000)
       .toFile('./uploads/' + '300x300-' + file.filename, function (err) {
         if (err) {
           console.log('sharp>>>', err);
